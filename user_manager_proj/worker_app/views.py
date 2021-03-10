@@ -4,25 +4,25 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 # Add model here
-from .models import Employee
+from .models import Worker
 
 # Add serializers here
-from .serializers import EmployeeSerializer
+from .serializers import WorkerSerializer
 
 
 # Create your views here.
 
 @api_view(['GET', 'POST'])
-def country(request):
+def worker(request):
     if request.method == 'GET':  # user requesting data
 
-        snippets = Employee.objects.all()
-        serializer = EmployeeSerializer(snippets, many=True)
+        snippets = Worker.objects.all()
+        serializer = WorkerSerializer(snippets, many=True)
 
         return Response(serializer.data)
 
     if request.method == 'POST':  # user posting data
-        serializer = EmployeeSerializer(data=request.data)
+        serializer = WorkerSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()  # save to db
             return Response(serializer.data, status=status.HTTP_201_CREATED)

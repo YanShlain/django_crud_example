@@ -1,12 +1,12 @@
 from rest_framework import serializers
 
 # Import your model here
-from .models import Employee
+from .models import Worker
 
 
-class EmployeeSerializer(serializers.ModelSerializer):
+class WorkerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Employee  # this is the model that is being serialized
+        model = Worker  # this is the model that is being serialized
         fields = '__all__'
 
         # For partial serialization un-mark below line
